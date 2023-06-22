@@ -21,7 +21,6 @@ export const styles = StyleSheet.create({
       height: '8%',
       width: '90%',
       margin: 12,
-      borderWidth: 1,
       borderRadius: 15,
       padding: 10,
     },
@@ -30,8 +29,9 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       backgroundColor: '#e6474a',
       padding: 10,
-      width: '40%',
+      width: '45%',
       height: '9%',
+      margin: 12,
       borderRadius: 15,
         text: {
           fontSize: 23,
@@ -59,4 +59,19 @@ export const styles = StyleSheet.create({
       width: 350,
       height: 250,
     },
-  });
+    passwordInputContainer: {
+      flexDirection: 'row',
+      height: '8%',
+      width: '90%',
+      alignItems: 'center',
+      borderRadius: 15,
+      padding: 10,
+      color: 'black',
+      backgroundColor:'white',
+    },
+    inputSenha:{
+      height: '100%',
+      width: '90%',
+      fontSize: 20,
+    }
+});
