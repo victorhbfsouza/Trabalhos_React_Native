@@ -9,15 +9,13 @@ export default function Cadastro({navigation}) {
 const [inputUsername, setInputUsername] = React.useState('');
     const [inputSenha, setInputSenha] = React.useState('');
         
-
-
-   return (
+return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Entre linhas: Faça parte do clube ! </Text>
             <TextInput
                 style={styles.input}
                 onChangeText={setInputUsername}
-                placeholder="Username"
+                placeholder="Pseudônimo"
                 keyboardType="default"
                 value={inputUsername}
             />
@@ -36,7 +34,12 @@ const [inputUsername, setInputUsername] = React.useState('');
                 keyboardType="default"
                 value={inputSenha}
             />
+             <TouchableHighlight style={styles.button} >
+                <Text style={styles.button.text}>Realizar Cadastro</Text>
+            </TouchableHighlight>
         </SafeAreaView>
     )
 }
+
+
 
