@@ -18,10 +18,12 @@ export default function RecentBookCard(props) {
       <View style={styles.description}>
         <Text style={styles.title}>{props.titulo}</Text>
         <Text style={styles.autor}>{props.autor}</Text>
-        <TouchableOpacity style={styles.btnSaibaMais} onPress={handleBookInfo}>
-          <Text>Saiba mais</Text>
-          <Ionicons name="arrow-forward-outline" size={18} />
-        </TouchableOpacity>
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.btnSaibaMais} onPress={handleBookInfo}>
+            <Text style={styles.btnText}> Saiba mais</Text>
+            <Ionicons name="arrow-forward-outline" size={20} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

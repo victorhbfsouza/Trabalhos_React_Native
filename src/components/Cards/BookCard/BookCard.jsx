@@ -19,10 +19,12 @@ export default function BookCard(props) {
       </View>
       <View style={styles.description}>
         <Text style={styles.title}>{props.titulo}</Text>
-        <TouchableOpacity style={styles.btnSaibaMais} onPress={handleBookInfo}>
-          <Text>Saiba mais</Text>
-          <Ionicons name="arrow-forward-outline" size={18} />
-        </TouchableOpacity>
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.btnSaibaMais} onPress={handleBookInfo}>
+            <Text style={styles.btnText}>Saiba mais</Text>
+            <Ionicons name="arrow-forward-outline" size={18} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

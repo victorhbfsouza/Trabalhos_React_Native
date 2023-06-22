@@ -36,5 +36,21 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     resizeMode: 'contain'
+  },
+  btnContainer:{
+    width: '100%',
+    flex: 1,
+    alignItems: 'flex-end',
+    marginTop: 10,
+  },
+  btnSaibaMais:{
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap:'wrap',
+    gap: 4
+  },
+  btnText:{
+    fontSize: 16,
+    fontWeight: 600
   }
 });
