@@ -34,6 +34,7 @@ export default function Login({ navigation }) {
     catch (error) {
       console.log("! Erro durante o processo de login: " + error)
     }
+
   }
 
   return (
