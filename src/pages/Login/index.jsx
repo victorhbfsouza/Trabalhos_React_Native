@@ -1,40 +1,41 @@
 
-import { View, Text, TextInput, TouchableHighlight, SafeAreaView } from "react-native"
+import { View, Text, TextInput, TouchableHighlight, SafeAreaView, Image } from "react-native"
 import { styles } from "./styles"
-import React,{useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import AxiosInstance from "../../api/AxiosInstance";
-import { DataContext } from "../../context/DataContext";
+import { DataContext } from "../../context/DataContext"
 
-export default function Login({navigation}) {
+export default function Login({ navigation }) {
 
     const [inputUsername, setInputUsername] = React.useState('');
     const [inputSenha, setInputSenha] = React.useState('');
-    const {armazenarDadosUsuario} = useContext(DataContext);
+    const { armazenarDadosUsuario } = useContext(DataContext);
 
     const handleLogin = async () => {
-        try{
-            const resultado = await AxiosInstance.post('/auth/signin',{
-                "username" : inputUsername,
+        try {
+            const resultado = await AxiosInstance.post('/auth/signin', {
+                "username": inputUsername,
                 "password": inputSenha
             })
-            if(resultado.status === 200){
+            if (resultado.status === 200) {
                 console.log(resultado)
                 var jwtToken = resultado.data;
                 armazenarDadosUsuario(jwtToken["accessToken"])
                 navigation.navigate('menu-principal')
             }
-            else{
+            else {
                 console.log("! Erro ao realizar o login")
             }
         }
-        catch(error){
-                    console.log("! Erro durante o processo de login: " + error)
+        catch (error) {
+            console.log("! Erro durante o processo de login: " + error)
         }
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Bem Vindo a E-ditora</Text>
+            <Image source={require('../Assets/Logo.png')} style={styles.logo} resizeMode="contain" />
+            <Text style={styles.title}>Olá velho amigo, faça login com suas informações</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={setInputUsername}
@@ -42,15 +43,14 @@ export default function Login({navigation}) {
                 keyboardType="default"
                 value={inputUsername}
             />
-            <TextInput
+                <TextInput
                 secureTextEntry={true}
-                style={styles.input}
+                style={styles.input }
                 onChangeText={setInputSenha}
                 placeholder="Senha"
                 keyboardType="default"
-                value={inputSenha}
+                value={inputSenha}  
             />
-            
             <TouchableHighlight style={styles.button} onPress={handleLogin}>
                 <Text style={styles.button.text}>Fazer Login</Text>
             </TouchableHighlight>
