@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 export default function TabRoutes() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="principal"
         component={Home}
@@ -51,12 +51,7 @@ export default function TabRoutes() {
           tabBarLabel: "Carrinho",
         }}
       />
-      <Tab.Screen
-              name="editoras-livros"
-              component={EditoraLivros}
-              options={{
-                tabBarButton: () => null,
-                }}/>
+
     </Tab.Navigator>
   );
 }
