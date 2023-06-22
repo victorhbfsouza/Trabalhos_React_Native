@@ -31,7 +31,8 @@ export default function Login({navigation}) {
                     console.log("! Erro durante o processo de login: " + error)
         }
     }
-
+        const handleCadastro = () => {navigation.navigate('cadastro')}
+        
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Bem Vindo a E-ditora</Text>
@@ -56,7 +57,7 @@ export default function Login({navigation}) {
             </TouchableHighlight>
             <View style={styles.signupContainer}>
                 <Text style={styles.firstText}>Não possui uma conta?</Text>
-                <TouchableHighlight>
+                <TouchableHighlight onPress={handleCadastro}>
                     <Text style={styles.secondText}>Cadastre-se</Text>
                 </TouchableHighlight>
             </View>
