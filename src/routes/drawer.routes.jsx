@@ -9,16 +9,6 @@ const Drawer = createDrawerNavigator();
 export default function DrawerRoutes() {
   return (
     <Drawer.Navigator screenOptions={{ title: "Livraria" }}>
-      <Drawer.Screen
-         name="inicio"
-         component={Home}
-         options={{
-           drawerIcon: ({ color, size }) => (
-             <Feather name="home" color={color} size={size} />
-           ),
-           drawerLabel: "Início"
-         }}
-      />
 
       <Drawer.Screen
         name="home"
@@ -27,7 +17,6 @@ export default function DrawerRoutes() {
           drawerIcon: ({ color, size }) => (
             <Feather name="home" color={color} size={size} />
           ),
-          drawerItemStyle: { height: 0 },
           drawerLabel: "Início"
         }}
       />
