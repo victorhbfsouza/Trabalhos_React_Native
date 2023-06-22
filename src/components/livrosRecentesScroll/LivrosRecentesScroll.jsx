@@ -25,7 +25,7 @@ export default function LivrosRecentes() {
     horizontal
     showsHorizontalScrollIndicator={false}
     data={livros}
-    renderItem={({item}) => <RecentBookCard titulo={item.nomeLivro} autor={item.autorDTO.nomeAutor} imagem={{ uri: "data:image/webp;base64," + item.imagem }}/>}
+    renderItem={({item}) => <RecentBookCard id={item.codigoLivro} titulo={item.nomeLivro} autor={item.autorDTO.nomeAutor} imagem={{ uri: "data:image/webp;base64," + item.imagem }}/>}
     keyExtractor={item => item.codigoLivro}
     />
 

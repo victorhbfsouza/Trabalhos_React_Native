@@ -12,7 +12,7 @@ export default function EditoraLivros({ route }) {
 
   useEffect(() => {
     getEditorasLivros();
-    navigation.setOptions({ title: `${route.params?.nome}` })
+    navigation.setOptions({ title: route.params?.nome})
   }, []);
 
   const getEditorasLivros = async () => {
@@ -35,8 +35,8 @@ export default function EditoraLivros({ route }) {
       numColumns={2} 
       renderItem={({ item }) => (
         <BookCard
+          id={item.codigoLivro}
           titulo={item.nomeLivro}
-          autor={'josé'}
           imagem={{ uri: "data:image/webp;base64," + item.imagem }}
         />
       )}
