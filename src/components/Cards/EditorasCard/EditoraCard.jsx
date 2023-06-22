@@ -13,7 +13,7 @@ export default function EditoraCard(props) {
 
   const handlePress = () => {
     
-    navigation.navigate("editoras-livros", { id: props.id,
+    navigation.navigate("editora-livros", { id: props.id,
                                             nome: props.nome});
   };
 
