@@ -8,7 +8,8 @@ export default function Cadastro({navigation}) {
 
 const [inputUsername, setInputUsername] = React.useState('');
     const [inputSenha, setInputSenha] = React.useState('');
-  
+        
+
 
    return (
         <SafeAreaView style={styles.container}>
@@ -22,10 +23,10 @@ const [inputUsername, setInputUsername] = React.useState('');
             />
             <TextInput
                 style={styles.input}
-                onChangeText={setInputUseremail}
+                onChangeText={setInputUsername}
                 placeholder="Email"
                 keyboardType="default"
-                value={setInputUseremail}
+                value={inputUsername}
             />
              <TextInput
                 secureTextEntry={true}
