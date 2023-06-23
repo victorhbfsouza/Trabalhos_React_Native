@@ -57,10 +57,10 @@ export default function Livro({ route }) {
       <View style={styles.description}>
         <Text style={styles.descriptionTitle}>Descrição</Text>
         <Text style={styles.descriptionText}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error culpa
-          perferendis totam nemo. Cum dicta, officia corrupti odio similique
-          blanditiis nostrum doloribus, rem voluptatum, animi ipsa nam sint?
-          Obcaecati, aliquam?
+          Copo furadis é disculpa de bebadis, arcu quam euismod magna.Todo mundo
+          vê os porris que eu tomo, mas ninguém vê os tombis que eu
+          levo!Praesent malesuada urna nisi, quis volutpat erat hendrerit non.
+          Nam vulputate dapibus.Quem num gosta di mé, boa gentis num é.
         </Text>
       </View>
     </View>

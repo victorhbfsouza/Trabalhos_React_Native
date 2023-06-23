@@ -13,12 +13,13 @@ export const styles = StyleSheet.create({
       fontSize: 23,
       color: 'white',
       textAlign:'center',
+      paddingHorizontal: 20
     },
     input: {
       backgroundColor:'white',
       color: 'black',
       fontSize: 20,
-      height: '8%',
+      height: '100%',
       width: '90%',
       margin: 12,
       borderRadius: 15,
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       backgroundColor: '#e6474a',
       padding: 10,
-      width: '45%',
+      width: '60%',
       height: '9%',
       margin: 12,
       borderRadius: 15,
@@ -59,6 +60,18 @@ export const styles = StyleSheet.create({
       width: 350,
       height: 250,
     },
+    inputContainer:{
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: '#ffffff',
+      color: 'black',
+      fontSize: 20,
+      height: '8%',
+      width: '90%',
+      margin: 12,
+      borderRadius: 15,
+      padding: 10,
+    },
     passwordInputContainer: {
       flexDirection: 'row',
       height: '8%',
@@ -72,6 +85,16 @@ export const styles = StyleSheet.create({
     inputSenha:{
       height: '100%',
       width: '90%',
+      marginLeft: 12,
       fontSize: 20,
+      borderRadius: 15,
+      padding: 10
+    },
+    buttonContent:{
+      flex: 1,
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between',
+      alignItems: 'center'
     }
 });

@@ -2,14 +2,13 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Feather } from "@expo/vector-icons";
 import TabRoutes from "./tabs.routes";
 import Editoras from "../pages/Editoras/Editoras";
-import Home from "../pages/Home";
+import { BtnLogout } from "../components/Button/BtnLogout";
 
 const Drawer = createDrawerNavigator();
 
 export default function DrawerRoutes() {
   return (
-    <Drawer.Navigator screenOptions={{ title: "Livraria" }}>
-
+    <Drawer.Navigator screenOptions={{ title: "Entre Linhas" }}>
       <Drawer.Screen
         name="home"
         component={TabRoutes}
@@ -17,7 +16,7 @@ export default function DrawerRoutes() {
           drawerIcon: ({ color, size }) => (
             <Feather name="home" color={color} size={size} />
           ),
-          drawerLabel: "Início"
+          drawerLabel: "Início",
         }}
       />
 
@@ -30,6 +29,17 @@ export default function DrawerRoutes() {
           ),
           drawerLabel: "Editoras",
           title: "Editoras",
+        }}
+      />
+      
+      <Drawer.Screen
+        name="sair"
+        component={BtnLogout}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Feather name="log-out" color={color} size={size} />
+          ),
+          drawerLabel: "Sair",
         }}
       />
     </Drawer.Navigator>
