@@ -6,7 +6,7 @@
 </div>
 
 
-Trabalho desenvolvido pelos etudantes da Residência em TIC Software do Serratec para a discplina de Desenvolvimento de Aplicatibo Mobile.
+Trabalho desenvolvido pelos etudantes da Residência em TIC Software do Serratec 2023.1 para a discplina de Desenvolvimento de Aplicativo Mobile.
 
 
 ## Criadores
