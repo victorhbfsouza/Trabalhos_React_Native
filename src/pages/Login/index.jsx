@@ -16,6 +16,8 @@ export default function Login({ navigation }) {
   };
 
   const handleLogin = async () => {
+    console.log(inputUsername)
+    console.log(inputSenha)
     try {
       const resultado = await AxiosInstance.post('/auth/signin', {
         "username": inputUsername,
@@ -37,18 +39,33 @@ export default function Login({ navigation }) {
 
   }
 
+  const handleCadastro = () =>{navigation.navigate('cadastro')}
+
   return (
     <SafeAreaView style={styles.container}>
       <Image source={require('../Assets/Logo.png')} style={styles.logo} resizeMode="contain" />
       <Text style={styles.title}>Olá velho amigo, faça login com suas informações</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setInputUsername}
-        placeholder="Username"
-        keyboardType="default"
-        value={inputUsername}
-      />
+      <View style={styles.inputContainer}>
+        <Ionicons
+                name={'person'}
+                size = {26}
+                color= {'#c1c2c2'}
+                />
+        <TextInput
+          style={styles.input}
+          onChangeText={setInputUsername}
+          placeholder="Nome de usuário"
+          keyboardType="default"
+          value={inputUsername}
+          returnKeyType='next'
+        />
+      </View>
       <View style={styles.passwordInputContainer}>
+        <Ionicons
+                name={'lock-closed'}
+                size = {26}
+                color= {'#c1c2c2'}
+                />
         <TextInput
           secureTextEntry={!showPassword}
           style={styles.inputSenha}
@@ -56,6 +73,7 @@ export default function Login({ navigation }) {
           placeholder="Senha"
           keyboardType="default"
           value={inputSenha}
+          returnKeyType='go'
         />
         <TouchableHighlight
           style={styles.passwordIcon}
@@ -70,11 +88,14 @@ export default function Login({ navigation }) {
         </TouchableHighlight>
       </View>
       <TouchableHighlight style={styles.button} onPress={handleLogin}>
-        <Text style={styles.button.text}>Fazer Login <Ionicons name="log-in-outline" size={26} /></Text>
+        <View style={styles.buttonContent}>
+          <Text style={styles.button.text}>Fazer Login </Text>
+          <Ionicons name="log-in-outline" size={32} color={'white'}/>
+        </View>
       </TouchableHighlight>
       <View style={styles.signupContainer}>
         <Text style={styles.firstText}>Não possui uma conta?</Text>
-        <TouchableHighlight>
+        <TouchableHighlight onPress={handleCadastro}>
           <Text style={styles.secondText}>Cadastre-se</Text>
         </TouchableHighlight>
       </View>

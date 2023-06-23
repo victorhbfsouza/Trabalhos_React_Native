@@ -35,6 +35,7 @@ export const DataProvider = ({ children }) => {
   return (
     <DataContext.Provider value={{
       dadosUsuario,
+      setDadosUsuario,
       armazenarDadosUsuario
     }}>
       {children}

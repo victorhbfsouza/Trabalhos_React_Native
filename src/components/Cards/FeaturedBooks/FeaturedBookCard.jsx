@@ -1,9 +1,11 @@
 import { Text, View, Image } from "react-native";
-import React from "react";
 import { styles } from "./styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function FeaturedBookCard(props) {
+
+
+
   const stars = [
     <Ionicons key="1" name="star-outline" size={18} />,
     <Ionicons key="2" name="star-outline" size={18} />,
