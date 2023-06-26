@@ -1,28 +1,9 @@
 import { FlatList, SafeAreaView } from "react-native";
-import React, { useState, useEffect, useContext } from "react";
-import EditoraCard from "../Cards/EditorasCard/EditoraCard";
-import AxiosInstance from "../../api/AxiosInstance";
-import { DataContext } from "../../context/DataContext";
+import React, { useContext } from "react";
+import EditoraElipseCard from "../Cards/EditorasCard/EditoraElipseCard";
 
 export default function EditorasScrollList() {
-  const { dadosUsuario } = useContext(DataContext);
-  const [editoras, setEditoras] = useState("");
-
-  useEffect(() => {
-    getEditoras();
-  }, []);
-
-  const getEditoras = async () => {
-    await AxiosInstance.get("/editoras", {
-      headers: {
-        Authorization: `Bearer ${dadosUsuario.token}`,
-      },
-    })
-      .then((response) => {
-        setEditoras(response.data);
-      })
-      .catch((error) => console.error(error));
-  };
+  const { editoras } = useContext(EditorasContext);
 
   return (
     <SafeAreaView>
@@ -31,7 +12,7 @@ export default function EditorasScrollList() {
         showsHorizontalScrollIndicator={false}
         data={editoras}
         renderItem={({ item }) => (
-          <EditoraCard
+          <EditoraElipseCard
             id={item.codigoEditora}
             nome={item.nomeEditora}
             imagem={{ uri: "data:image/webp;base64," + item.imagem }}

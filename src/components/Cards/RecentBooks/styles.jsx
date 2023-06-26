@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   description: {
     flex: 1,
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#ffffff",
     paddingHorizontal: 5,
@@ -27,10 +27,12 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "bold",
+    textAlign: 'center',
   },
   autor: {
     fontSize: 14,
     color: "#A8A3A3",
+    textAlign: 'center',
   },
   image:{
     width: "100%",
