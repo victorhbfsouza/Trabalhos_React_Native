@@ -2,8 +2,47 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import EditorasScrollList from "../../components/editorasScroll/EditorasScrollList";
 import LivrosRecentes from "../../components/livrosRecentesScroll/LivrosRecentesScroll";
 import FeaturedBookCard from "../../components/Cards/FeaturedBooks/FeaturedBookCard";
+import { DataContext } from "../../context/DataContext";
+import { useContext, useEffect } from "react";
+import AxiosInstance from "../../api/AxiosInstance";
+import { EditorasContext } from "../../context/EditorasContext";
+import { LivrosContext } from "../../context/LivrosContext";
 
 export default function Home() {
+
+    const { dadosUsuario } = useContext(DataContext);
+    const { saveEditoras } = useContext(EditorasContext);
+    const { saveLivros } = useContext(LivrosContext);
+  
+    useEffect(() => {
+      getLivros();
+      getEditoras();
+    }, []);
+  
+    const getLivros = async () => {
+      AxiosInstance.get('/livros', {
+        headers: {
+          Authorization: `Bearer ${dadosUsuario.token}`
+        }
+      })
+        .then(response => {
+          saveLivros(response.data);
+        })
+        .catch(error => console.error(error));
+    };
+  
+    const getEditoras = async () => {
+      await AxiosInstance.get("/editoras", {
+        headers: {
+          Authorization: `Bearer ${dadosUsuario.token}`,
+        },
+      })
+        .then((response) => {
+          saveEditoras(response.data);
+        })
+        .catch((error) => console.error(error));
+    };
+  
   return (
     <ScrollView>
       <View>

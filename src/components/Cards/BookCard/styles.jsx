@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#e2e2e2",
     height: 200,
     borderRadius: 12,
-    marginHorizontal: 8,
+    margin: 8,
     overflow: "hidden",
   },
   imageWrapper: {

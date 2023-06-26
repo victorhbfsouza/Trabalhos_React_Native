@@ -4,46 +4,78 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
-      gap:10,
-      backgroundColor: '#3176ca',
+      backgroundColor: '#142344',
       alignItems: 'center',
       justifyContent: 'center',
+      position: 'relative',
+      gap: 30
+    },
+    header:{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      margin: 10
+    },
+    logo: {
+      width: 200,
+      height: 200,
     },
     title:{
-      fontSize: 30,
+      fontSize: 23,
+      color: 'white',
+      textAlign:'center',
+      paddingHorizontal: 20
     },
-    input: {
-      height: '8%',
-      width: '80%',
-      margin: 12,
-      borderWidth: 1,
+    mainContainer:{
+      flexDirection: 'column',
+      justifyContent: "center",
+      alignItems: "center",
+      gap: 30,
+      width: '80%'
+    },
+    inputContainer:{
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: '#ffffff',
+      color: 'black',
+      width: '100%',
+      fontSize: 20,
+      borderRadius: 15,
       padding: 10,
     },
-    button: {
+    textInput:{
+      width: '100%',
+      height: '100%',
+      padding: 10
+    },
+    signupButton: {
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#DDDDDD',
-      padding: 10,
-      width: '80%',
-      height: '10%',
-      borderRadius: 15,
+      backgroundColor: '#e6474a',
+      width: '100%',
+      height: '20%',
+      borderRadius: 10,
         text: {
-          fontSize: 20
+          fontSize: 20,
+          color: 'white'
         }
     },
-    signupContainer:{
-      flexDirection:'row',
-      flexWrap:'wrap',
-      justifyContent: 'flex-end',
-      alignContent: 'flex-end',
-      padding: 10,
-      gap: 5,
+    buttonContent:{
+      flex: 1,
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 10
     },
-    firstText:{
-      fontSize: 20,
+    errorContainer:{
+      flex: 1,
+      width: '100%',
+      alignItems: "flex-end",
+      justifyContent: 'center'
     },
-    secondText:{
-      fontSize: 20,
-      fontWeight: 700,
+    textError:{
+      color: '#e6474a',
+      fontSize: 14
     }
   });
