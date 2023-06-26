@@ -5,6 +5,7 @@ import Carrinho from "../pages/Carrinho/Carrinho";
 import Editoras from "../pages/Editoras/Editoras";
 import Favoritos from "../pages/Favoritos/Favoritos";
 import EditoraLivros from "../pages/EditoraLivros/EditoraLivros";
+import BuscaLivros from "../pages/BuscaLivros/BuscaLivros";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,12 +24,12 @@ export default function TabRoutes() {
       />
       <Tab.Screen
         name="pesquisa"
-        component={Editoras}
+        component={BuscaLivros}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="book-open" color={color} size={size} />
           ),
-          tabBarLabel: "Editoras",
+          tabBarLabel: "Buscar Livros",
         }}
       />
       <Tab.Screen

@@ -1,5 +1,6 @@
-import { FlatList, SafeAreaView } from "react-native";
 import React, { useContext } from "react";
+import { FlatList, SafeAreaView } from "react-native";
+import { EditorasContext } from "../../context/EditorasContext";
 import EditoraElipseCard from "../Cards/EditorasCard/EditoraElipseCard";
 
 export default function EditorasScrollList() {

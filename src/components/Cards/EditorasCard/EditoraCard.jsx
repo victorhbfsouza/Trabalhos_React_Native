@@ -1,12 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
+import React from "react";
 import {
-    StyleSheet,
-    Image,
-    View,
-    Text,
-    TouchableWithoutFeedback,
-  } from "react-native";
-  import { useNavigation } from "@react-navigation/native";
-  import React from "react";
+  Image,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
   
   export default function EditoraCard(props) {

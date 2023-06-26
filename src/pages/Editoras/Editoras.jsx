@@ -1,10 +1,12 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import EditoraCard from "../../components/Cards/EditorasCard/EditoraCard";
 import { EditorasContext } from "../../context/EditorasContext";
+import React from "react";
 import { useContext } from "react";
 
 export default function Editoras(){
     const { editoras } = useContext(EditorasContext);
+
     return(
         <View style={styles.containerEditora}>
            <FlatList

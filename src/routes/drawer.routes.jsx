@@ -21,7 +21,7 @@ export default function DrawerRoutes() {
       />
 
       <Drawer.Screen
-        name="editoras"
+        name="drawer-editoras"
         component={Editoras}
         options={{
           drawerIcon: ({ color, size }) => (
