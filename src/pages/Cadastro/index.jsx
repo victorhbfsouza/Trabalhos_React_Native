@@ -18,9 +18,6 @@ export default function Cadastro({ navigation }) {
   const [inputEmail, setInputEmail] = React.useState("");
   const [inputSenha, setInputSenha] = React.useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [usernameError, setUsernameError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
   const [textError, setTextError] = useState('');
   const { armazenarDadosUsuario } = useContext(DataContext);
 

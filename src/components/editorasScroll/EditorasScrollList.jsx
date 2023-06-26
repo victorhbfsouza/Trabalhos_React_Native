@@ -1,28 +1,12 @@
 import { FlatList, SafeAreaView } from "react-native";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import EditoraCard from "../Cards/EditorasCard/EditoraCard";
-import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
+import { EditorasContext } from "../../context/EditorasContext";
 
 export default function EditorasScrollList() {
   const { dadosUsuario } = useContext(DataContext);
-  const [editoras, setEditoras] = useState("");
-
-  useEffect(() => {
-    getEditoras();
-  }, []);
-
-  const getEditoras = async () => {
-    await AxiosInstance.get("/editoras", {
-      headers: {
-        Authorization: `Bearer ${dadosUsuario.token}`,
-      },
-    })
-      .then((response) => {
-        setEditoras(response.data);
-      })
-      .catch((error) => console.error(error));
-  };
+  const { editoras } = useContext(EditorasContext);
 
   return (
     <SafeAreaView>

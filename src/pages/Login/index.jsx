@@ -23,6 +23,7 @@ export default function Login({ navigation }) {
     setShowPassword(!showPassword);
   };
 
+
   const handleLogin = async () => {
     console.log(inputUsername);
     console.log(inputSenha);

@@ -1,24 +1,10 @@
 import { FlatList } from "react-native";
 import React, {useEffect, useContext, useState} from "react";
 import RecentBookCard from "../Cards/RecentBooks/RecentBookCard";
-import { DataContext } from "../../context/DataContext";
-import AxiosInstance from "../../api/AxiosInstance";
+import { LivrosContext } from "../../context/LivrosContext";
 
 export default function LivrosRecentes() {
-  const {dadosUsuario} = useContext(DataContext);
-  const [livros, setLivros] = useState('');
-
-  useEffect(() => {
-    AxiosInstance.get('/livros',{
-      headers: {
-              Authorization: `Bearer ${dadosUsuario.token}`
-            }
-    })
-    .then(response => {
-      setLivros(response.data);
-    })
-    .catch(error => console.error(error))
-  },[]);
+  const {livros} = useContext(LivrosContext);
 
   return (
     <FlatList
