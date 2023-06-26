@@ -4,54 +4,57 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
-      gap:10,
       backgroundColor: '#142344',
       alignItems: 'center',
       justifyContent: 'center',
+      position: 'relative',
+      gap: 30
     },
     header:{
-      width: '100%',
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      paddingLeft: 20
-    },
-    imageWrapper:{
-      flex: 1,
-      width: '100%',
-      height: '100%',
-      alignItems: 'center',
-      justifyContent: 'center'
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      margin: 10
     },
     logo: {
-      width: '100%',
-      height: '100%',
+      width: 200,
+      height: 200,
     },
     title:{
-      fontSize: 30,
+      fontSize: 23,
       color: 'white',
       textAlign:'center',
+      paddingHorizontal: 20
     },
-    input: {
-      backgroundColor:'white',
+    mainContainer:{
+      flexDirection: 'column',
+      justifyContent: "center",
+      alignItems: "center",
+      gap: 30,
+      width: '80%'
+    },
+    inputContainer:{
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: '#ffffff',
       color: 'black',
-      fontSize: 20,
-      height: '90%',
       width: '100%',
-      margin: 12,
+      fontSize: 20,
       borderRadius: 15,
+      padding: 10,
+    },
+    textInput:{
+      width: '100%',
+      height: '100%',
       padding: 10
     },
-    button: {
+    signupButton: {
       alignItems: 'center',
       justifyContent: 'center',
-      textAlign: 'center',
       backgroundColor: '#e6474a',
-      padding: 10,
-      width: '60%',
-      height: '9%',
-      margin: 12,
-      borderRadius: 15,
+      width: '100%',
+      height: '20%',
+      borderRadius: 10,
         text: {
           fontSize: 20,
           color: 'white'
@@ -61,43 +64,18 @@ export const styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'row',
       width: '100%',
-      justifyContent: 'space-between',
-      alignItems: 'center'
-    },
-    signupContainer:{
-      flexDirection:'row',
-      flexWrap:'wrap',
-      justifyContent: 'flex-end',
-      alignContent: 'flex-end',
-      padding: 10,
-      gap: 5,
-    },
-    firstText:{
-      fontSize: 20,
-    },
-    secondText:{
-      fontSize: 20,
-      fontWeight: 700,
-    },
-    inputContainer:{
-      flex: 1,
-      flexDirection: 'row',
+      justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#ffffff',
-      color: 'black',
-      fontSize: 20,
-      height: '8%',
-      width: '90%',
-      margin: 10,
-      borderRadius: 15,
-      padding: 10,
+      gap: 10
     },
-    inputSenha: {
-      height: '100%',
-      width: '90%',
-      marginLeft: 12,
-      fontSize: 20,
-      borderRadius: 15,
-      padding: 10,
+    errorContainer:{
+      flex: 1,
+      width: '100%',
+      alignItems: "flex-end",
+      justifyContent: 'center'
+    },
+    textError:{
+      color: '#e6474a',
+      fontSize: 14
     }
   });

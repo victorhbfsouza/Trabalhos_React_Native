@@ -6,7 +6,7 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View
+  View,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AxiosInstance from "../../api/AxiosInstance";
@@ -18,6 +18,10 @@ export default function Cadastro({ navigation }) {
   const [inputEmail, setInputEmail] = React.useState("");
   const [inputSenha, setInputSenha] = React.useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [textError, setTextError] = useState('');
   const { armazenarDadosUsuario } = useContext(DataContext);
 
   const handleTogglePasswordVisibility = () => {
@@ -25,67 +29,73 @@ export default function Cadastro({ navigation }) {
   };
 
   const handleCadastro = () => {
-    saveUser();
-  }
-    
+    if(inputUsername == ''){
+      setTextError('O nome de usuário não pode estar vazio')
+    }
+    else if(inputEmail == ''){
+      setTextError('O email não deve estar vazio')
+    }
+    else if(inputSenha.length < 8){
+      setTextError('A senha deve ter 8 ou mais caracteres')
+    } else{
+      saveUser();
+    }
+  };
 
-  const saveUser = async () =>{
+  const saveUser = async () => {
     try {
-      const signUpResponse = await AxiosInstance.post('/auth/signup', {
-        "username": inputUsername,
-        "email": inputEmail,
-        "password": inputSenha,
-        "role": ["user"]
-      })
+      const signUpResponse = await AxiosInstance.post("/auth/signup", {
+        username: inputUsername,
+        email: inputEmail,
+        password: inputSenha,
+        role: ["user"],
+      });
       if (signUpResponse.status === 200) {
-        console.log(signUpResponse)
-        try{
-          const signInResponse = await AxiosInstance.post('/auth/signin',{
-            "username": inputUsername,
-            "password": inputSenha
-          })
+        console.log(signUpResponse);
+        try {
+          const signInResponse = await AxiosInstance.post("/auth/signin", {
+            username: inputUsername,
+            password: inputSenha,
+          });
           if (signInResponse.status === 200) {
             var jwtToken = signInResponse.data;
-            armazenarDadosUsuario(jwtToken["accessToken"])
-            navigation.navigate('menu-principal')
+            armazenarDadosUsuario(jwtToken["accessToken"]);
+            navigation.navigate("menu-principal");
+          } else {
+            console.log("! Erro ao realizar o login");
           }
-          else {
-            console.log("! Erro ao realizar o login")
-          }
+        } catch (error) {
+          console.log(error.response.data);
         }
-        catch(error){
-          console.log("!Erro durante o processo de cadastro: "+ error)
-        }
+      } else {
+
+        console.log("! Erro ao realizar o cadastro");
       }
-      else {
-        console.log("! Erro ao realizar o cadastro")
-      }
+    } catch (error) {
+      setTextError(error.response.data.message);
     }
-    catch (error) {
-      console.log("! Erro durante o processo de cadastro: " + error)
-    }
-  }
+  };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      {/*Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name={"arrow-back"} size={50} color={"#ffffff"} />
         </TouchableOpacity>
       </View>
-      <View style={styles.imageWrapper}>
         <Image
           source={require("../Assets/Logo.png")}
           style={styles.logo}
           resizeMode="contain"
         />
-      </View>
-      <View style={{flex: 1,width:'100%', alignItems: 'center',justifyContent: 'center'}}>
-        <Text style={styles.title}>Entre linhas: Faça parte do clube ! </Text>
+        <Text style={styles.title}>Faça parte do clube ! </Text>
+      
+      <View style={styles.mainContainer}>
         <View style={styles.inputContainer}>
           <Ionicons name={"person"} size={26} color={"#c1c2c2"} />
           <TextInput
-            style={styles.input}
+            style={styles.textInput}
             onChangeText={setInputUsername}
             placeholder="Nome de usuário"
             keyboardType="default"
@@ -96,7 +106,7 @@ export default function Cadastro({ navigation }) {
         <View style={styles.inputContainer}>
           <Ionicons name={"mail"} size={26} color={"#c1c2c2"} />
           <TextInput
-            style={styles.input}
+            style={styles.textInput}
             onChangeText={setInputEmail}
             placeholder={"Email"}
             keyboardType="default"
@@ -108,7 +118,7 @@ export default function Cadastro({ navigation }) {
           <Ionicons name={"lock-closed"} size={26} color={"#c1c2c2"} />
           <TextInput
             secureTextEntry={!showPassword}
-            style={styles.inputSenha}
+            style={styles.textInput}
             onChangeText={setInputSenha}
             placeholder="Senha"
             keyboardType="default"
@@ -126,15 +136,29 @@ export default function Cadastro({ navigation }) {
               size={26}
             />
           </TouchableHighlight>
+        
         </View>
-      </View>
+        {
+          textError != '' ? 
+          <View style={styles.errorContainer}>
+            <Text style={styles.textError}>{textError}</Text>
+          </View>
+          :
+          ('')
+        }
+        
 
-      <TouchableHighlight style={styles.button} onPress={handleCadastro}>
-        <View style={styles.buttonContent}>
-          <Text style={styles.button.text}>Realizar Cadastro</Text>
-          <Ionicons name={"arrow-forward"} size={23} color={"#ffffff"} />
-        </View>
-      </TouchableHighlight>
-    </SafeAreaView>
+        {/* Btn Login*/}
+        <TouchableHighlight
+          style={styles.signupButton}
+          onPress={handleCadastro}
+        >
+          <View style={styles.buttonContent}>
+            <Text style={styles.signupButton.text}>Realizar Cadastro</Text>
+            <Ionicons name={"arrow-forward"} size={30} color={"#ffffff"} />
+          </View>
+        </TouchableHighlight>
+      </View>
+    </View>
   );
 }
