@@ -12,9 +12,9 @@ export const styles = StyleSheet.create({
     },
     header:{
       position: 'absolute',
-      top: 0,
+      top: 50,
       left: 0,
-      margin: 10
+      margin: 10,
     },
     logo: {
       width: 200,
@@ -42,6 +42,11 @@ export const styles = StyleSheet.create({
       fontSize: 20,
       borderRadius: 15,
       padding: 10,
+      position: 'relative',
+    },
+    passwordIcon:{
+      position: 'absolute',
+      right: 15
     },
     textInput:{
       width: '100%',

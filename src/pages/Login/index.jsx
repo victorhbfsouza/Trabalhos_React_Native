@@ -108,6 +108,7 @@ export default function Login({ navigation }) {
             />
           </TouchableHighlight>
         </View>
+       
         {
           badCredentials ? 
           (<View style={styles.invalidCredentialsContainer}>
@@ -116,6 +117,7 @@ export default function Login({ navigation }) {
           :
           ('')
         }
+        
         {/* Btn Login*/}
         <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
           <View style={styles.buttonContent}>

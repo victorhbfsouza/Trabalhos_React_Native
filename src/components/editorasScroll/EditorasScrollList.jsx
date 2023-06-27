@@ -1,11 +1,9 @@
-import { FlatList, SafeAreaView } from "react-native";
 import React, { useContext } from "react";
-import EditoraCard from "../Cards/EditorasCard/EditoraCard";
-import { DataContext } from "../../context/DataContext";
+import { FlatList, SafeAreaView } from "react-native";
 import { EditorasContext } from "../../context/EditorasContext";
+import EditoraElipseCard from "../Cards/EditorasCard/EditoraElipseCard";
 
 export default function EditorasScrollList() {
-  const { dadosUsuario } = useContext(DataContext);
   const { editoras } = useContext(EditorasContext);
 
   return (
@@ -15,7 +13,7 @@ export default function EditorasScrollList() {
         showsHorizontalScrollIndicator={false}
         data={editoras}
         renderItem={({ item }) => (
-          <EditoraCard
+          <EditoraElipseCard
             id={item.codigoEditora}
             nome={item.nomeEditora}
             imagem={{ uri: "data:image/webp;base64," + item.imagem }}

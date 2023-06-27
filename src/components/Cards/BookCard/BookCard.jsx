@@ -1,7 +1,6 @@
-import { Image, Text, View } from "react-native";
+import { Image, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { styles } from "./styles";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
