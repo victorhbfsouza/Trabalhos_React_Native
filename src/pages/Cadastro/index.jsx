@@ -2,13 +2,12 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import React, { useContext, useState } from "react";
 import {
   Image,
-  SafeAreaView,
   Text,
   TextInput,
   TouchableHighlight,
   View,
 } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
 import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
 import { styles } from "./styles";

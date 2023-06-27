@@ -3,20 +3,24 @@ import EditorasScrollList from "../../components/editorasScroll/EditorasScrollLi
 import LivrosRecentes from "../../components/livrosRecentesScroll/LivrosRecentesScroll";
 import FeaturedBookCard from "../../components/Cards/FeaturedBooks/FeaturedBookCard";
 import { DataContext } from "../../context/DataContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState} from "react";
 import AxiosInstance from "../../api/AxiosInstance";
 import { EditorasContext } from "../../context/EditorasContext";
 import { LivrosContext } from "../../context/LivrosContext";
+import {getValueFor, getValueArray} from '../../services/DateService'
 
 export default function Home() {
 
     const { dadosUsuario } = useContext(DataContext);
     const { saveEditoras } = useContext(EditorasContext);
     const { saveLivros } = useContext(LivrosContext);
+    const [values, setValues] = useState([])
   
+
     useEffect(() => {
       getLivros();
       getEditoras();
+      getValues();
     }, []);
   
     const getLivros = async () => {
@@ -42,9 +46,17 @@ export default function Home() {
         })
         .catch((error) => console.error(error));
     };
-  
+
+    const getValues = async () => {
+        let response = await getValueArray('banana');
+        setValues(response)
+    }
+    
   return (
     <ScrollView>
+      <View>
+        <Text>{values.map(item => item.nome)}</Text>
+      </View>
       <View>
         <Text style={styles.title}>Editoras</Text>
         {/* Lista de Editoras */}

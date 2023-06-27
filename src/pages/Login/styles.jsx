@@ -1,4 +1,3 @@
-
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -52,6 +51,11 @@ export const styles = StyleSheet.create({
       fontSize: 20,
       borderRadius: 15,
       padding: 10,
+      position: 'relative',
+    },
+    passwordIcon:{
+      position: 'absolute',
+      right: 15
     },
     inputError:{
       flexDirection: 'row',
@@ -95,7 +99,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       backgroundColor: '#e6474a',
       width: '100%',
-      height: '30%',
+      height: 80,
       borderRadius: 10,
         text: {
           fontSize: 20,
