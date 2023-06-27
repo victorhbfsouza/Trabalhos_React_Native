@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "../pages/Login";
-import DrawerRoutes from "./drawer.routes";
+import TabRoutes from "./tabs.routes";
 import EditoraLivros from "../pages/EditoraLivros/EditoraLivros";
 import Cadastro from "../pages/Cadastro";
 import Livro from "../pages/Livro/Livro";
@@ -16,7 +16,7 @@ export function StackRoutes() {
     >
       <Stack.Screen name="login" component={Login} />
       <Stack.Screen name="cadastro" component={Cadastro}/>
-      <Stack.Screen name="menu-principal" component={DrawerRoutes} />
+      <Stack.Screen name="menu-principal" component={TabRoutes} />
       <Stack.Screen
         name="editora-livros"
         component={EditoraLivros}

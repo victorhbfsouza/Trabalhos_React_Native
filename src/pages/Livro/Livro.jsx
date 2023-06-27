@@ -9,6 +9,7 @@ import { DataTable } from "react-native-paper";
 
 export default function Livro({ route }) {
   const { dadosUsuario } = useContext(DataContext);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [livro, setLivro] = useState({});
   useEffect(() => {
     getLivro();
@@ -27,13 +28,39 @@ export default function Livro({ route }) {
       .catch((error) => console.error(error));
   };
 
+  const handleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  }
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: "data:image/webp;base64," + livro.imagem }}
-        />
+        <View style={styles.leftMenu}>
+            <Image
+              style={styles.image}
+              source={{ uri: "data:image/webp;base64," + livro.imagem }}
+            />
+
+          <TouchableOpacity style={styles.favoriteBtn} onPress={handleFavorite}>
+            {
+              isFavorite ? (
+                <>
+                 <Ionicons name="heart" size={22} color={"red"} />
+                 <Text style={styles.btnTextFavoritado}>Favorito</Text>
+                </>
+               
+              ) : (
+                <>
+                  <Ionicons name="heart-outline" size={22} color={"black"} />
+                  <Text style={styles.btnTextFavorito}>Favorito</Text>
+                </>
+              
+              )
+            }
+          
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.rightMenu}>
           <View style={styles.bookInfo}>
             <Text style={styles.bookTitle}>{livro.nomeLivro}</Text>
@@ -42,17 +69,18 @@ export default function Livro({ route }) {
               {livro.editoraDTO?.nomeEditora}
             </Text>
           </View>
+
           <View style={styles.priceContainer}>
             <Text style={styles.bookCurrency}>R$</Text>
             <Text style={styles.bookPrice}>99,99</Text>
           </View>
-          <View>
-            <TouchableOpacity style={styles.addCartBtn}>
-              <Ionicons name="cart-outline" size={22} color={"white"} />
-              <Text style={styles.btnText}>Adicionar ao Carrinho</Text>
-            </TouchableOpacity>
-          </View>
+
+          <TouchableOpacity style={styles.addCartBtn}>
+            <Ionicons name="cart-outline" size={22} color={"white"} />
+            <Text style={styles.btnText}>Adicionar ao Carrinho</Text>
+          </TouchableOpacity>
         </View>
+
       </View>
       <View style={styles.description}>
         <Text style={styles.descriptionTitle}>Descrição</Text>
