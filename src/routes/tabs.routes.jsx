@@ -38,35 +38,12 @@ export default function TabRoutes() {
         name="carrinho"
         component={Carrinho}
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            focused ? ( 
+          tabBarIcon: ({color, size }) => (
             <Feather
               name="shopping-cart"
-              color={'#142344'}
+              color={color}
               size={size}
-              style={{backgroundColor: '#e6474a',
-                      width: 30,
-                      height: 30,
-                      position: 'absolute',
-                      bottom: 20,
-                      borderRadius: 100,
-                      transform: [{scale: 2}]}}
               />
-              ) : (
-              <Feather
-              name="shopping-cart"
-              color={'#e6474a'}
-              size={size}
-              style={{backgroundColor: '#142344',
-                      width: 30,
-                      height: 30,
-                      position: 'absolute',
-                      bottom: 20,
-                      borderRadius: 100,
-                      transform: [{scale: 2}]}}
-              />
-            )
-       
           ),
           tabBarLabel: "Carrinho",
           title: "Carrinho",

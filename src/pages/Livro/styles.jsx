@@ -5,33 +5,41 @@ export const styles = StyleSheet.create({
     mainContainer:{
         flex: 1,
         flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
         padding: 8,
         gap: 10
     },
     container:{
-        flex: 1/2,
+        height: 300,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     image:{
-        width: 200,
-        height: 200,
+        width: 170,
+        height: 170,
         resizeMode: 'contain',
+    },
+    leftMenu:{
+        height: '100%',
+        paddingVertical: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 20
     },
     rightMenu:{
         height: '100%',
-        maxHeight: 200,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
+        padding: 20,
     }, 
+    bookInfo:{
+        gap: 10
+    },
     bookCurrency:{
         fontSize: 10,
         fontWeight: 100
     } ,
-    bookInfo:{
-        width: 180
-    },
     bookTitle:{
         fontSize: 20,
         fontWeight: 600,
@@ -45,7 +53,6 @@ export const styles = StyleSheet.create({
         color: "#A8A3A3"
     },
     priceContainer:{
-        flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'center',
@@ -63,6 +70,16 @@ export const styles = StyleSheet.create({
        color: '#ffffff',
        backgroundColor: '#3176ca',
        borderRadius: 8
+    },
+    favoriteBtn:{
+        flexDirection: 'row',
+        gap: 20,
+    },
+    btnTextFavoritado:{
+        color: 'red'
+    },
+    btnTextFavorito:{
+        color: '#000000'
     },
     btnText:{
         color: '#ffffff'
