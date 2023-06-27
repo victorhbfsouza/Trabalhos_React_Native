@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     rightMenu:{
-        flex:1,
         height: '100%',
         maxHeight: 200,
         flexDirection: 'column',
@@ -31,12 +30,11 @@ export const styles = StyleSheet.create({
         fontWeight: 100
     } ,
     bookInfo:{
-        flex: 1,
-        flexDirection: 'column'
+        width: 180
     },
     bookTitle:{
         fontSize: 20,
-        fontWeight: 600
+        fontWeight: 600,
     },
     bookAuthor:{
         fontSize: 16,
@@ -58,8 +56,7 @@ export const styles = StyleSheet.create({
        flexWrap: 'nowrap',
        flexDirection: 'row',
        gap: 10,
-       maxWidth: 400,
-       minWidth:100,
+       width: 180,
        padding: 10,
        alignItems: 'center',
        justifyContent: 'center',

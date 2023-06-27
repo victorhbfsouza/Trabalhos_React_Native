@@ -37,9 +37,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'cover'
   },
   btnSaibaMais:{
-    flex: 1,
     flexDirection: 'row',
-    flexWrap:'wrap',
     justifyContent: 'flex-end',
     alignContent: 'flex-end',
     gap: 2

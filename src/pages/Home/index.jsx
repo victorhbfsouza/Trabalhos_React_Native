@@ -54,9 +54,14 @@ export default function Home() {
     
   return (
     <ScrollView>
+      {
+        /*
       <View>
         <Text>{values.map(item => item.nome)}</Text>
       </View>
+        */
+      }
+ 
       <View>
         <Text style={styles.title}>Editoras</Text>
         {/* Lista de Editoras */}

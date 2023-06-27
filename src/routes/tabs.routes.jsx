@@ -20,7 +20,7 @@ export default function TabRoutes() {
           tabBarIcon: ({ color, size }) => (
             <Feather name="home" color={color} size={size} />
           ),
-          tabBarLabel: "Inicio"
+          tabBarLabel: "Inicio",
         }}
       />
       <Tab.Screen
@@ -28,12 +28,51 @@ export default function TabRoutes() {
         component={BuscaLivros}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="book-open" color={color} size={size} />
+            <Feather name="book-open" color={color} size={size}/>
           ),
           tabBarLabel: "Buscar Livros",
-          title: "Buscar Livros"
+          title: "Buscar Livros",
         }}
       />
+      <Tab.Screen
+        name="carrinho"
+        component={Carrinho}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            focused ? ( 
+            <Feather
+              name="shopping-cart"
+              color={'#142344'}
+              size={size}
+              style={{backgroundColor: '#e6474a',
+                      width: 30,
+                      height: 30,
+                      position: 'absolute',
+                      bottom: 20,
+                      borderRadius: 100,
+                      transform: [{scale: 2}]}}
+              />
+              ) : (
+              <Feather
+              name="shopping-cart"
+              color={'#e6474a'}
+              size={size}
+              style={{backgroundColor: '#142344',
+                      width: 30,
+                      height: 30,
+                      position: 'absolute',
+                      bottom: 20,
+                      borderRadius: 100,
+                      transform: [{scale: 2}]}}
+              />
+            )
+       
+          ),
+          tabBarLabel: "Carrinho",
+          title: "Carrinho",
+        }}
+      />
+
       <Tab.Screen
         name="favoritos"
         component={Favoritos}
@@ -42,21 +81,11 @@ export default function TabRoutes() {
             <Feather name="heart" color={color} size={size} />
           ),
           tabBarLabel: "Favoritos",
-          title: "Favoritos"
+          title: "Favoritos",
         }}
       />
+
       <Tab.Screen
-        name="carrinho"
-        component={Carrinho}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="shopping-cart" color={color} size={size} />
-          ),
-          tabBarLabel: "Carrinho",
-          title: "Carrinho"
-        }}
-      />
-       <Tab.Screen
         name="perfil"
         component={Perfil}
         options={{
@@ -64,10 +93,9 @@ export default function TabRoutes() {
             <Feather name="user" color={color} size={size} />
           ),
           tabBarLabel: "Meu Perfil",
-          title: "Meu Perfil"
+          title: "Meu Perfil",
         }}
       />
-
     </Tab.Navigator>
   );
 }

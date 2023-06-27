@@ -15,7 +15,7 @@ export default function EditoraCard(props) {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    incrementItem('banana', dados)
+    //incrementItem('banana', dados)
     navigation.navigate("editora-livros", { id: props.id,
                                             nome: props.nome});
   };
