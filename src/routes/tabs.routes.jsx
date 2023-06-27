@@ -6,12 +6,13 @@ import Editoras from "../pages/Editoras/Editoras";
 import Favoritos from "../pages/Favoritos/Favoritos";
 import EditoraLivros from "../pages/EditoraLivros/EditoraLivros";
 import BuscaLivros from "../pages/BuscaLivros/BuscaLivros";
+import Perfil from "../pages/Perfil/Perfil";
 
 const Tab = createBottomTabNavigator();
 
 export default function TabRoutes() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator screenOptions={{ title: "Entre Linhas" }}>
       <Tab.Screen
         name="principal"
         component={Home}
@@ -19,7 +20,7 @@ export default function TabRoutes() {
           tabBarIcon: ({ color, size }) => (
             <Feather name="home" color={color} size={size} />
           ),
-          tabBarLabel: "Inicio",
+          tabBarLabel: "Inicio"
         }}
       />
       <Tab.Screen
@@ -30,6 +31,7 @@ export default function TabRoutes() {
             <Feather name="book-open" color={color} size={size} />
           ),
           tabBarLabel: "Buscar Livros",
+          title: "Buscar Livros"
         }}
       />
       <Tab.Screen
@@ -40,6 +42,7 @@ export default function TabRoutes() {
             <Feather name="heart" color={color} size={size} />
           ),
           tabBarLabel: "Favoritos",
+          title: "Favoritos"
         }}
       />
       <Tab.Screen
@@ -50,6 +53,18 @@ export default function TabRoutes() {
             <Feather name="shopping-cart" color={color} size={size} />
           ),
           tabBarLabel: "Carrinho",
+          title: "Carrinho"
+        }}
+      />
+       <Tab.Screen
+        name="perfil"
+        component={Perfil}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" color={color} size={size} />
+          ),
+          tabBarLabel: "Meu Perfil",
+          title: "Meu Perfil"
         }}
       />
 

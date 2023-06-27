@@ -36,8 +36,8 @@ export async function getValueArray(key){
 
 export async function incrementItem(key, value){
   try{
-    let items = await getValueArray(key);
-    //Se items for nulo apenas salva, senão incrementa.
+    let items = await getValueArray(key); //Retorna um array
+    //Se items não forem nulos nem undefinied eles acrescenta senão salva.
     if(items !== null && items !== undefined) {
       items = [...items, value ]
       await saveItem(key, items)
@@ -45,7 +45,6 @@ export async function incrementItem(key, value){
     else{
       saveItem(key, value)
     } 
-    
   }
   catch(error){
     console.log('Não foi possível incrementar os dados ' + error)
