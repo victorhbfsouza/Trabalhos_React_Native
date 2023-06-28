@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
         gap: 2,
     },
     addCartBtn:{
-       flexWrap: 'nowrap',
+       flexWrap: 'wrap',
        flexDirection: 'row',
        gap: 10,
        width: 180,
@@ -83,7 +83,8 @@ export const styles = StyleSheet.create({
         color: '#000000'
     },
     btnText:{
-        color: '#ffffff'
+        color: '#ffffff',
+        fontSize: 12
     },
     bookPrice:{
         fontSize: 23

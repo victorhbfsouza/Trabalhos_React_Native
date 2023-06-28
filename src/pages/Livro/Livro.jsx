@@ -13,16 +13,28 @@ export default function Livro({ route }) {
 
   const { dadosUsuario } = useContext(DataContext);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [addedCart, setaddedCart] = useState(false);
   const [livro, setLivro] = useState({});
   useEffect(() => {
     verifyFavorite()
+    verifyCart()
     getLivro();
   }, []);
+
+  useEffect(() => {
+    navigation.setOptions({ title: livro.nomeLivro})
+  }, [livro])
 
   const verifyFavorite = async () => {
     let favoritos = await getValueFor('favoritos');
     if(favoritos.includes(route.params?.id)){
       setIsFavorite(true)
+    }
+  }
+  const verifyCart = async () => {
+    let itensCarrrinho = await getValueFor('carrinho');
+    if(itensCarrrinho.includes(route.params?.id)){
+      setaddedCart(true)
     }
   }
 
@@ -40,6 +52,7 @@ export default function Livro({ route }) {
 
   const handleAddCart = () => {
     saveItem('carrinho', route.params?.id)
+    setaddedCart(!addedCart)
     navigation.navigate("menu-principal");
   }
 
@@ -92,8 +105,21 @@ export default function Livro({ route }) {
           </View>
 
           <TouchableOpacity style={styles.addCartBtn} onPress={handleAddCart}>
-            <Ionicons name="cart-outline" size={22} color={"white"} />
-            <Text style={styles.btnText}>Adicionar ao Carrinho</Text>
+            
+            {
+              addedCart ? (
+                <>
+                  <Ionicons name="checkmark-circle" size={22} color={"white"} />
+                  <Text style={styles.btnText}>Adicionado ao carrinho</Text>
+                </>
+              ) : (
+                <>
+                  <Ionicons name="cart-outline" size={22} color={"white"} />
+                  <Text style={styles.btnText}>Adicionar ao Carrinho</Text>
+                </>
+              )
+            }
+            
           </TouchableOpacity>
         </View>
 

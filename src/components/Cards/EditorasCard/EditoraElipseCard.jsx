@@ -6,16 +6,12 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import React, {useState} from "react";
-import {saveItem, incrementItem, delItem} from '../../../services/DateService'
 
 
 export default function EditoraCard(props) {
-  const [dados, setDados] = useState({nome : 'Gabriel', idade: 10})
   const navigation = useNavigation();
 
   const handlePress = () => {
-    //incrementItem('banana', dados)
     navigation.navigate("editora-livros", { id: props.id,
                                             nome: props.nome});
   };

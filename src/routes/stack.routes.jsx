@@ -25,8 +25,7 @@ export function StackRoutes() {
       <Stack.Screen
         name="livro"
         component={Livro}
-        options={{ headerShown: true,
-                         title: "Livro"}}
+        options={{ headerShown: true}}
         />
 
     </Stack.Navigator>
