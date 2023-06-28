@@ -34,7 +34,8 @@ export const styles = StyleSheet.create({
         padding: 20,
     }, 
     bookInfo:{
-        gap: 10
+        gap: 10,
+        maxWidth: 180
     },
     bookCurrency:{
         fontSize: 10,

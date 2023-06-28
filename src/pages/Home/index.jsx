@@ -7,8 +7,7 @@ import { useContext, useEffect, useState} from "react";
 import AxiosInstance from "../../api/AxiosInstance";
 import { EditorasContext } from "../../context/EditorasContext";
 import { LivrosContext } from "../../context/LivrosContext";
-import {getValueFor, getValueArray} from '../../services/DateService'
-
+import { getValueFor, delItem } from '../../services/DateService'
 export default function Home() {
 
     const { dadosUsuario } = useContext(DataContext);
@@ -48,7 +47,7 @@ export default function Home() {
     };
 
     const getValues = async () => {
-        let response = await getValueArray('banana');
+        let response = await getValueFor('favoritos');
         setValues(response)
     }
     
