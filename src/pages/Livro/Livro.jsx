@@ -5,15 +5,23 @@ import AxiosInstance from "../../api/AxiosInstance";
 import { styles } from "./styles";
 import { TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { DataTable } from "react-native-paper";
+import {saveItem, getValueFor} from '../../services/DateService'
 
 export default function Livro({ route }) {
   const { dadosUsuario } = useContext(DataContext);
   const [isFavorite, setIsFavorite] = useState(false);
   const [livro, setLivro] = useState({});
   useEffect(() => {
+    verifyFavorite()
     getLivro();
   }, []);
+
+  const verifyFavorite = async () => {
+    let favoritos = await getValueFor('favoritos');
+    if(favoritos.includes(route.params?.id)){
+      setIsFavorite(true)
+    }
+  }
 
   const getLivro = async () => {
     await AxiosInstance.get(`/livros/${route.params?.id}`, {
@@ -23,13 +31,13 @@ export default function Livro({ route }) {
     })
       .then((response) => {
         setLivro(response.data);
-        console.log(response.data);
       })
       .catch((error) => console.error(error));
   };
 
   const handleFavorite = () => {
     setIsFavorite(!isFavorite);
+    saveItem('favoritos', route.params?.id)
   }
 
   return (
