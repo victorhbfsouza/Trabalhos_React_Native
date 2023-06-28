@@ -6,8 +6,11 @@ import { styles } from "./styles";
 import { TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {saveItem, getValueFor} from '../../services/DateService'
+import { useNavigation } from "@react-navigation/native";
 
 export default function Livro({ route }) {
+  const navigation = useNavigation();
+
   const { dadosUsuario } = useContext(DataContext);
   const [isFavorite, setIsFavorite] = useState(false);
   const [livro, setLivro] = useState({});
@@ -34,6 +37,11 @@ export default function Livro({ route }) {
       })
       .catch((error) => console.error(error));
   };
+
+  const handleAddCart = () => {
+    saveItem('carrinho', route.params?.id)
+    navigation.navigate("menu-principal");
+  }
 
   const handleFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -83,7 +91,7 @@ export default function Livro({ route }) {
             <Text style={styles.bookPrice}>99,99</Text>
           </View>
 
-          <TouchableOpacity style={styles.addCartBtn}>
+          <TouchableOpacity style={styles.addCartBtn} onPress={handleAddCart}>
             <Ionicons name="cart-outline" size={22} color={"white"} />
             <Text style={styles.btnText}>Adicionar ao Carrinho</Text>
           </TouchableOpacity>

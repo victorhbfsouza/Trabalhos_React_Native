@@ -56,7 +56,7 @@ export default function Login({ navigation }) {
     <View style={styles.container}>
       {/*Logo */}
       <Image
-        source={require("../Assets/Logo.png")}
+        source={require("../../assets/Logo.png")}
         style={styles.logo}
         resizeMode="contain"
       />

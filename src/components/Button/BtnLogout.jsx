@@ -3,6 +3,7 @@ import { DataContext } from "../../context/DataContext";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { delItem } from "../../services/DateService";
 
 export const BtnLogout = () => {
   const { setDadosUsuario } = useContext(DataContext);
@@ -10,6 +11,7 @@ export const BtnLogout = () => {
 
   const handleLogout = () => {
     setDadosUsuario("");
+    delItem('carrinho')
     navigation.navigate("login");
   };
 
