@@ -26,7 +26,7 @@ export default function Carrinho(){
         if(idsItensCarrinho !== null){
             setItensCarrinho(
               livros.filter((livro) => {
-                if (idsItensCarrinho.includes(livro.codigoLivro)) {
+                if (idsItensCarrinho?.includes(livro.codigoLivro)) {
                   return livro;
                 }
               })

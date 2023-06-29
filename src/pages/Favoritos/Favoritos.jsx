@@ -20,7 +20,7 @@ export default function Favoritos() {
   useEffect(() => {
     setFilteredLivros(
       livros.filter((livro) => {
-        if (idsLivrosFavoritos.includes(livro.codigoLivro)) {
+        if (idsLivrosFavoritos?.includes(livro.codigoLivro)) {
           return livro;
         }
       })
