@@ -44,7 +44,6 @@ export async function overwriteItem(key, value){
     } catch (error) {
       console.log("Erro ao persistir dados:" + error);
     }
-    //console.log('Itens salvos:' + JSON.stringify(await getValueFor(key)))
 }
 
 export async function getValueFor(key) {

@@ -76,7 +76,6 @@ export const styles = StyleSheet.create({
       backgroundColor: 'transparent'
     },
     invalidCredentialsContainer:{
-      flex: 1,
       width: '100%',
       height: 2,
       alignItems: "flex-end",

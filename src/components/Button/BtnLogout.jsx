@@ -11,7 +11,8 @@ export const BtnLogout = () => {
 
   const handleLogout = () => {
     setDadosUsuario("");
-    delItem('carrinho')
+    delItem('carrinho');
+    delItem('favoritos')
     navigation.navigate("login");
   };
 
