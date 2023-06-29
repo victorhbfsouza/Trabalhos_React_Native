@@ -61,6 +61,7 @@ export default function Carrinho(){
                     <Text>Limpar carrinho</Text>
                   </TouchableOpacity>
                     <FlatList
+                    style={{marginBottom: 25}}
                     showsHorizontalScrollIndicator={false}
                     ItemSeparatorComponent={() => <View style={{height: 20}} />}
                     data={itensCarrinho}
