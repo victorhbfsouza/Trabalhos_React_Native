@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const LoadingComponent = () => {
   const navigation = useNavigation();
+  const [loadText, setLoadText] = useState('');
   const [loadingTexts, setLoadingTexts] = useState([
     "Preparando a estante de livros...",
     "Buscando os últimos lançamentos...",
@@ -15,7 +16,7 @@ const LoadingComponent = () => {
   
   useEffect(() => {
     const numeroAleatorio = Math.floor(Math.random() * 4);
-    setLoadingTexts(loadingTexts[numeroAleatorio])
+    setLoadText(loadingTexts[numeroAleatorio])
     navigation.setOptions({headerShown: false});
     navigation.setOptions({tabBarStyle: {display: 'none'}});
   }, [])
@@ -31,7 +32,7 @@ const LoadingComponent = () => {
       />
       <Text style={styles.animationText}>
         {   
-        loadingTexts
+        loadText
         }
       </Text>
     </View>

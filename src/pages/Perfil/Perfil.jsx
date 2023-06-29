@@ -1,9 +1,12 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React from "react";
+import React,{useContext} from "react";
 import { BtnLogout } from "../../components/Button/BtnLogout";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { DataContext } from "../../context/DataContext";
 
 export default function Perfil() {
+  const { dadosUsuario } = useContext(DataContext);
+
   return (
     <View style={styles.container}>
       <View
@@ -17,7 +20,7 @@ export default function Perfil() {
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Ionicons name="person-circle-outline" size={200} color={"#e2e2e2"} />
           <Text style={{ fontSize: 20, fontWeight: "600", textAlign: 'center' }}>
-            Maria Andriolo Santiago Buboubee Duarte Raeder 
+            {dadosUsuario?.nome}
           </Text>
         </View>
 

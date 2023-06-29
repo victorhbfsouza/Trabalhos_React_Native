@@ -4,7 +4,6 @@ import React, { useContext } from "react";
 import Home from "../pages/Home";
 import Carrinho from "../pages/Carrinho/Carrinho";
 import Favoritos from "../pages/Favoritos/Favoritos";
-import BuscaLivros from "../pages/BuscaLivros/BuscaLivros";
 import Perfil from "../pages/Perfil/Perfil";
 import { CartContext } from "../context/CartContext";
 
@@ -27,17 +26,7 @@ export default function TabRoutes() {
           tabBarLabel: "Inicio",
         }}
       />
-      {/* <Tab.Screen
-        name="pesquisa"
-        component={BuscaLivros}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="book-open" color={color} size={size}/>
-          ),
-          tabBarLabel: "Buscar Livros",
-          title: "Buscar Livros",
-        }}
-      /> */}
+
       <Tab.Screen
         name="carrinho"
         component={Carrinho}
