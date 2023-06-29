@@ -26,8 +26,8 @@ export const BtnLogout = () => {
 const styles = StyleSheet.create({
     btnContainer: {
     flexDirection: 'row',
-    width: '50%',
     height: 55,
+    width: '30%',
     backgroundColor: "#e6474a",
     alignItems: 'center',
     justifyContent: 'space-evenly',
