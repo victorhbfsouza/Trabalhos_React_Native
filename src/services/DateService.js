@@ -17,7 +17,7 @@ export async function saveItem(key, value) {
 
     let novoStorage
     //Evita repetição. Se Tiver tira, se não tiver bota
-    if (storage.includes(value)) {
+    if (storage?.includes(value)) {
       let index = storage.indexOf(value);
       if(index !== null || index !== undefined || index > -1){
         novoStorage = storage.filter(item => {
@@ -32,11 +32,19 @@ export async function saveItem(key, value) {
     }
 
     await SecureStore.setItemAsync(key, JSON.stringify(novoStorage));
-    console.log('Ids favoritos: ' + await getValueFor(key))
 
   } catch (error) {
     console.log("Erro ao persistir dados:" + error);
   }
+
+}
+export async function overwriteItem(key, value){
+    try {
+      await SecureStore.setItemAsync(key, JSON.stringify(value));
+    } catch (error) {
+      console.log("Erro ao persistir dados:" + error);
+    }
+    //console.log('Itens salvos:' + JSON.stringify(await getValueFor(key)))
 }
 
 export async function getValueFor(key) {
@@ -49,6 +57,8 @@ export async function getValueFor(key) {
   }
   return result;
 }
+
+
 
 export const delItem = async (key) => {
   await SecureStore.deleteItemAsync(key);

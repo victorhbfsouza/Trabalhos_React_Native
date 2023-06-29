@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     margin: 8,
     overflow: "hidden",
+    position: 'relative'
   },
   imageWrapper: {
     flex: 2,
@@ -41,5 +42,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignContent: 'flex-end',
     gap: 2
+  },
+  favBtn:{
+    position: 'absolute',
+    right: '5%',
+    bottom: '8%'
   }
 });

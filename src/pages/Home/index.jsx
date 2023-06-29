@@ -3,96 +3,110 @@ import EditorasScrollList from "../../components/editorasScroll/EditorasScrollLi
 import LivrosRecentes from "../../components/livrosRecentesScroll/LivrosRecentesScroll";
 import FeaturedBookCard from "../../components/Cards/FeaturedBooks/FeaturedBookCard";
 import { DataContext } from "../../context/DataContext";
-import { useContext, useEffect, useState} from "react";
+import React,{ useContext, useEffect, useState } from "react";
 import AxiosInstance from "../../api/AxiosInstance";
 import { EditorasContext } from "../../context/EditorasContext";
 import { LivrosContext } from "../../context/LivrosContext";
-import { getValueFor, delItem } from '../../services/DateService'
+import { getValueFor } from "../../services/DateService";
+import LoadingComponent from "../../components/Loading/LoadingComponent";
+import { useNavigation } from "@react-navigation/native";
+
 export default function Home() {
+  const navigation = useNavigation();
+  const { dadosUsuario } = useContext(DataContext);
+  const { saveEditoras } = useContext(EditorasContext);
+  const { saveLivros } = useContext(LivrosContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [values, setValues] = useState([]);
 
-    const { dadosUsuario } = useContext(DataContext);
-    const { saveEditoras } = useContext(EditorasContext);
-    const { saveLivros } = useContext(LivrosContext);
-    const [values, setValues] = useState([])
-  
+  useEffect(() => {
+    setIsLoading(true);
+    getLivros();
+    getEditoras();
+    getValues();
+    setTimeout(() => setIsLoading(false), 2000)
+  }, []);
 
-    useEffect(() => {
-      getLivros();
-      getEditoras();
-      getValues();
-    }, []);
-  
-    const getLivros = async () => {
-      AxiosInstance.get('/livros', {
-        headers: {
-          Authorization: `Bearer ${dadosUsuario.token}`
-        }
+  const getLivros = async () => {
+    AxiosInstance.get("/livros", {
+      headers: {
+        Authorization: `Bearer ${dadosUsuario.token}`,
+      },
+    })
+      .then((response) => {
+        saveLivros(response.data);
       })
-        .then(response => {
-          saveLivros(response.data);
-        })
-        .catch(error => console.error(error));
-    };
-  
-    const getEditoras = async () => {
-      await AxiosInstance.get("/editoras", {
-        headers: {
-          Authorization: `Bearer ${dadosUsuario.token}`,
-        },
-      })
-        .then((response) => {
-          saveEditoras(response.data);
-        })
-        .catch((error) => console.error(error));
-    };
+      .catch((error) => console.error(error));
+  };
 
-    const getValues = async () => {
-        let response = await getValueFor('favoritos');
-        setValues(response)
-    }
+  const getEditoras = async () => {
+    await AxiosInstance.get("/editoras", {
+      headers: {
+        Authorization: `Bearer ${dadosUsuario.token}`,
+      },
+    })
+      .then((response) => {
+        saveEditoras(response.data);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const getValues = async () => {
+    let response = await getValueFor("favoritos");
+    setValues(response);
     
+  };
+  const changeBottomTab = async () => {
+    navigation.setOptions({tabBarStyle: {display: 'flex'}, headerShown: true})
+  }
+
   return (
-    <ScrollView>
-      {
-        /*
-      <View>
-        <Text>{values.map(item => item.nome)}</Text>
-      </View>
-        */
-      }
- 
-      <View>
-        <Text style={styles.title}>Editoras</Text>
-        {/* Lista de Editoras */}
-        <EditorasScrollList />
-      </View>
+    <>
+      {isLoading ? (
+        <>
+         {/* <LoadingComponent />  */}
+        </>
+      ) : (
+        <>
+          {
+            //changeBottomTab()
+          }
+          <ScrollView>
+            <View>
+              <Text style={styles.title}>Editoras</Text>
+              {/* Lista de Editoras */}
+              <EditorasScrollList />
+            </View>
 
-      <View>
-        <Text style={styles.title}>Livros Recentes</Text>
-        {/* Lista de Livros Recentes */}
-        <LivrosRecentes />
-      </View>
+            <View>
+              <Text style={styles.title}>Livros Recentes</Text>
+              {/* Lista de Livros Recentes */}
+              <LivrosRecentes />
+            </View>
 
-      <View>
-        <Text style={styles.title}> Destaques</Text>
-        {/* Card livro em Destque */}
-        <FeaturedBookCard
-          titulo={"Titulo 1"}
-          subtitulo={"O primeiro"}
-          avaliacao={1}
-        />
-        <FeaturedBookCard
-          titulo={"Titulo 2"}
-          subtitulo={"O segundo"}
-          avaliacao={5}
-        />
-        <FeaturedBookCard
-          titulo={"Titulo 3"}
-          subtitulo={"O terceiro"}
-          avaliacao={4}
-        />
-      </View>
-    </ScrollView>
+            <View>
+              <Text style={styles.title}> Destaques</Text>
+              {/* Card livro em Destque */}
+              <FeaturedBookCard
+                titulo={"Titulo 1"}
+                subtitulo={"O primeiro"}
+                avaliacao={1}
+              />
+              <FeaturedBookCard
+                titulo={"Titulo 2"}
+                subtitulo={"O segundo"}
+                avaliacao={5}
+              />
+              <FeaturedBookCard
+                titulo={"Titulo 3"}
+                subtitulo={"O terceiro"}
+                avaliacao={4}
+              />
+            </View>
+          </ScrollView>
+        </>
+      )}
+    </>
   );
 }
 

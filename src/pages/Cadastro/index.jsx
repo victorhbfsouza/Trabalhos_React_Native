@@ -39,6 +39,7 @@ export default function Cadastro({ navigation }) {
   };
 
   const saveUser = async () => {
+    
     try {
       const signUpResponse = await AxiosInstance.post("/auth/signup", {
         username: inputUsername,

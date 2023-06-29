@@ -4,15 +4,20 @@ import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
 import BookCard from "../../components/Cards/BookCard/BookCard";
 import { useNavigation } from "@react-navigation/native";
+import LoadingIndicator from "../../components/Loading/LoadingIndicator";
 
 export default function EditoraLivros({ route }) {
   const { dadosUsuario } = useContext(DataContext);
   const [editorasLivros, setEditorasLivros] = useState([]);
   const navigation = useNavigation();
+  const[isLoading, setIsLoading] = useState(true)
+
 
   useEffect(() => {
+    setIsLoading(true)
     getEditorasLivros();
     navigation.setOptions({ title: route.params?.nome})
+    setTimeout(() => setIsLoading(false), 1000)
   }, []);
 
   const getEditorasLivros = async () => {
@@ -29,18 +34,31 @@ export default function EditoraLivros({ route }) {
 
   return (
     <View style={styles.containerEditora}>
-    <FlatList
-      data={editorasLivros}
-      keyExtractor={(item) => item.id}
-      numColumns={2} 
-      renderItem={({ item }) => (
-        <BookCard
-          id={item.codigoLivro}
-          titulo={item.nomeLivro}
-          imagem={{ uri: "data:image/webp;base64," + item.imagem }}
+      {
+        isLoading ? 
+        (
+          
+            <LoadingIndicator/>
+          
+        )
+        : 
+        (
+          <FlatList
+          data={editorasLivros}
+          keyExtractor={(item) => item.id}
+          numColumns={2} 
+          renderItem={({ item }) => (
+            <BookCard
+              id={item.codigoLivro}
+              titulo={item.nomeLivro}
+              imagem={{ uri: "data:image/webp;base64," + item.imagem }}
+              showFavSymbol={false}
+            />
+          )}
         />
-      )}
-    />
+        )
+      }
+  
   </View>
     
   );
