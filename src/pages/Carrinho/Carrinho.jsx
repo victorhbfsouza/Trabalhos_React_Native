@@ -5,26 +5,27 @@ import { delItem, getValueFor } from "../../services/DateService";
 import { LivrosContext } from "../../context/LivrosContext";
 import { CartCard } from "../../components/Cards/CartCard/CartCard";
 import Ionicons from "@expo/vector-icons/Ionicons";
+// import { CartContext } from "../../context/CartContext";
 
 export default function Carrinho(){
     const [idsItensCarrinho, setIDsItensCarrinho] = useState([]);
     const [itensCarrinho, setItensCarrinho] = useState([]);
     const { livros } = useContext(LivrosContext);
+    // const { cart, setCart } = useContext(CartContext);
   
     useFocusEffect(
       React.useCallback(() => {
             getIDsItensCarrinho();
-            console.log('itens Carrinho' + idsItensCarrinho)
         return () => null;
       }, [])
     );
-
 
     useEffect(() => {
         if(idsItensCarrinho !== null){
             setItensCarrinho(
               livros.filter((livro) => {
                 if (idsItensCarrinho.includes(livro.codigoLivro)) {
+                  console.log('filter: ' + livro.codigoLivro)
                   return livro;
                 }
               })
@@ -34,38 +35,45 @@ export default function Carrinho(){
     
   
     const getIDsItensCarrinho = async () => {
-        setIDsItensCarrinho(await getValueFor("carrinho"));
+        let strIds = await getValueFor("carrinho");
+        let arrIds = JSON.parse(strIds);
+        setIDsItensCarrinho(arrIds)
     };
 
     const handleRemoveAll = () => {
         setItensCarrinho(null)
+        setIDsItensCarrinho(null)
         delItem('carrinho')
     }
   
     return (
       <View style={styles.container}>
-          <TouchableOpacity style={styles.removeAll} onPress={handleRemoveAll}>
-            <Ionicons name="remove-circle" size={28} />
-            <Text>Limpar carrinho</Text>
-          </TouchableOpacity>
+          
                {
               itensCarrinho === null || itensCarrinho.length == 0 ?
               (
                   <Text style={styles.noFavorites}>Você ainda não possui itens no carrinho :(</Text>
               ):
               (
-                  <FlatList
-                  showsHorizontalScrollIndicator={false}
-                  ItemSeparatorComponent={() => <View style={{height: 20}} />}
-                  data={itensCarrinho}
-                  renderItem={({item}) => <CartCard id={item.codigoLivro} 
-                                                    titulo={item.nomeLivro} 
-                                                    autor={item.autorDTO.nomeAutor} 
-                                                    imagem={{ uri: "data:image/webp;base64," + item.imagem }}
-                                                    carrinho={idsItensCarrinho}
-                                                    atualizaCarrinho = {setIDsItensCarrinho}/>}
-                  keyExtractor={item => item.codigoLivro}
-                  />
+                <>
+                  <TouchableOpacity style={styles.removeAll} onPress={handleRemoveAll}>
+                    <Ionicons name="remove-circle" size={28} />
+                    <Text>Limpar carrinho</Text>
+                  </TouchableOpacity>
+                    <FlatList
+                    showsHorizontalScrollIndicator={false}
+                    ItemSeparatorComponent={() => <View style={{height: 20}} />}
+                    data={itensCarrinho}
+                    extraData={itensCarrinho}
+                    renderItem={({item}) => <CartCard id={item.codigoLivro} 
+                                                      titulo={item.nomeLivro} 
+                                                      autor={item.autorDTO.nomeAutor} 
+                                                      imagem={{ uri: "data:image/webp;base64," + item.imagem }}
+                                                      carrinho={idsItensCarrinho}
+                                                      atualizaCarrinho = {setIDsItensCarrinho}/>}
+                    keyExtractor={item => item.codigoLivro}
+                    />
+                </>
               )
           }
       </View>

@@ -2,7 +2,7 @@ import { Image, Text, View, TouchableOpacity } from "react-native";
 import React, {useState} from 'react'
 import { styles } from "./styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { delItem, saveItem } from "../../../services/DateService";
+import { overwriteItem } from "../../../services/DateService";
 
 export const CartCard = ({id, titulo, imagem, carrinho, atualizaCarrinho }) => {
 
@@ -12,30 +12,30 @@ export const CartCard = ({id, titulo, imagem, carrinho, atualizaCarrinho }) => {
         setItemCounter(itemCounter + 1);
     }
     const handleRemove = () => {
+        console.log('Item a ser apagado: ' + id)
         if(itemCounter > 1){
             setItemCounter(itemCounter - 1);
         }
         else{
             //Transforma em array a props do carrinho
-            let arrIdsCart = JSON.parse(carrinho);
-
+            let arrIdsCart = carrinho;
+            console.log(arrIdsCart)
             //Filtra todos os elementos, retornando todos os elementos menos o que foi
             //selecionado para ser apagado
             let newIds = arrIdsCart.filter(ids => {
                 return ids !== id
             })
+            console.log(typeof newIds)
+
+            //Sobrecreve o  carrinho passando os ids agora filtrados
+            overwriteItem('carrinho', newIds)
 
             //utiliza a props de SetIdsCarrinho que é passada como props
             //como atualiza carrinho
-            atualizaCarrinho(JSON.stringify(newIds))
-
-            //Apaga o carrinho
-            delItem('carrinho')
-
-            //Salva um novo carrinho passando os ids agora filtrados
-            newIds.map(id => saveItem('carrinho', id))
+            atualizaCarrinho(newIds)
         }
     }
+
 
   return (
     <View style={styles.container}>

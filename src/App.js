@@ -9,7 +9,7 @@ export default function App() {
     <DataProvider>
       <EditorasProvider>
         <LivrosProvider>
-          <Routes/>
+            <Routes/>
         </LivrosProvider>
       </EditorasProvider>
     </DataProvider>

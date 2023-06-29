@@ -29,7 +29,9 @@ export default function Favoritos() {
   }, [livrosFavoritos]);
 
   const getLivrosFavoritos = async () => {
-    setLivrosFavoritos(await getValueFor("favoritos"));
+    let strIds = await getValueFor("favoritos");
+    let arrIds = JSON.parse(strIds);
+    setLivrosFavoritos(arrIds);
   };
 
   return (

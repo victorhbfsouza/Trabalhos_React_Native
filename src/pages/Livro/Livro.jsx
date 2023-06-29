@@ -27,13 +27,17 @@ export default function Livro({ route }) {
 
   const verifyFavorite = async () => {
     let favoritos = await getValueFor('favoritos');
-    if(favoritos.includes(route.params?.id)){
+    let itensFavoritosArr = JSON.parse(favoritos);
+
+    if(itensFavoritosArr?.includes(route.params?.id)){
       setIsFavorite(true)
     }
   }
   const verifyCart = async () => {
-    let itensCarrrinho = await getValueFor('carrinho');
-    if(itensCarrrinho.includes(route.params?.id)){
+    let itensCarrinho = await getValueFor('carrinho');
+    let itensCarrinhoArr = JSON.parse(itensCarrinho);
+
+    if(itensCarrinhoArr?.includes(route.params?.id)){
       setaddedCart(true)
     }
   }
