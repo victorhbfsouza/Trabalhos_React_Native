@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import LottieView from "lottie-react-native";
 import book from "../../assets/book.json";
+import { useNavigation } from "@react-navigation/native";
 
 const LoadingComponent = () => {
+  const navigation = useNavigation();
   const [loadingTexts, setLoadingTexts] = useState([
     "Preparando a estante de livros...",
     "Buscando os últimos lançamentos...",
     "Por favor, aguarde...",
     "Estamos quase lá...",
   ]);
-  const timer = ms => new Promise(res => setTimeout(res, ms))
-  async function load () { 
-    for (var i = 0; i < loadingTexts.length; i++) {
-      console.log(loadingTexts[i]);
-      await timer(6000); 
-    }
-  }
+  
+  useEffect(() => {
+    const numeroAleatorio = Math.floor(Math.random() * 4);
+    setLoadingTexts(loadingTexts[numeroAleatorio])
+    navigation.setOptions({headerShown: false});
+    navigation.setOptions({tabBarStyle: {display: 'none'}});
+  }, [])
+
   return (
     <View style={styles.container}>
       <LottieView
@@ -28,7 +31,7 @@ const LoadingComponent = () => {
       />
       <Text style={styles.animationText}>
         {   
-            load()
+        loadingTexts
         }
       </Text>
     </View>

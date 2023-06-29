@@ -9,12 +9,14 @@ import { EditorasContext } from "../../context/EditorasContext";
 import { LivrosContext } from "../../context/LivrosContext";
 import { getValueFor } from "../../services/DateService";
 import LoadingComponent from "../../components/Loading/LoadingComponent";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Home() {
+  const navigation = useNavigation();
   const { dadosUsuario } = useContext(DataContext);
   const { saveEditoras } = useContext(EditorasContext);
   const { saveLivros } = useContext(LivrosContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState([]);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export default function Home() {
     getLivros();
     getEditoras();
     getValues();
-    //setTimeout(() => setIsLoading(false), 1000)
+  setTimeout(() => setIsLoading(false), 1000)
   }, []);
 
   const getLivros = async () => {
@@ -52,6 +54,7 @@ export default function Home() {
   const getValues = async () => {
     let response = await getValueFor("favoritos");
     setValues(response);
+    
   };
 
   return (
@@ -61,39 +64,44 @@ export default function Home() {
           <LoadingComponent />
         </>
       ) : (
-        <ScrollView>
-          <View>
-            <Text style={styles.title}>Editoras</Text>
-            {/* Lista de Editoras */}
-            <EditorasScrollList />
-          </View>
+        <>
+          {
+            navigation.setOptions({tabBarStyle: {display: 'flex'}, headerShown: true})
+          }
+          <ScrollView>
+            <View>
+              <Text style={styles.title}>Editoras</Text>
+              {/* Lista de Editoras */}
+              <EditorasScrollList />
+            </View>
 
-          <View>
-            <Text style={styles.title}>Livros Recentes</Text>
-            {/* Lista de Livros Recentes */}
-            <LivrosRecentes />
-          </View>
+            <View>
+              <Text style={styles.title}>Livros Recentes</Text>
+              {/* Lista de Livros Recentes */}
+              <LivrosRecentes />
+            </View>
 
-          <View>
-            <Text style={styles.title}> Destaques</Text>
-            {/* Card livro em Destque */}
-            <FeaturedBookCard
-              titulo={"Titulo 1"}
-              subtitulo={"O primeiro"}
-              avaliacao={1}
-            />
-            <FeaturedBookCard
-              titulo={"Titulo 2"}
-              subtitulo={"O segundo"}
-              avaliacao={5}
-            />
-            <FeaturedBookCard
-              titulo={"Titulo 3"}
-              subtitulo={"O terceiro"}
-              avaliacao={4}
-            />
-          </View>
-        </ScrollView>
+            <View>
+              <Text style={styles.title}> Destaques</Text>
+              {/* Card livro em Destque */}
+              <FeaturedBookCard
+                titulo={"Titulo 1"}
+                subtitulo={"O primeiro"}
+                avaliacao={1}
+              />
+              <FeaturedBookCard
+                titulo={"Titulo 2"}
+                subtitulo={"O segundo"}
+                avaliacao={5}
+              />
+              <FeaturedBookCard
+                titulo={"Titulo 3"}
+                subtitulo={"O terceiro"}
+                avaliacao={4}
+              />
+            </View>
+          </ScrollView>
+        </>
       )}
     </>
   );
