@@ -27,7 +27,7 @@ export default function TabRoutes() {
           tabBarLabel: "Inicio",
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="pesquisa"
         component={BuscaLivros}
         options={{
@@ -37,12 +37,12 @@ export default function TabRoutes() {
           tabBarLabel: "Buscar Livros",
           title: "Buscar Livros",
         }}
-      />
+      /> */}
       <Tab.Screen
         name="carrinho"
         component={Carrinho}
         options={{
-          tabBarBadge: cart.length === 0 ? null : cart.length,
+          tabBarBadge: cart !== null && cart?.length > 0 ? cart.length : null,
           tabBarBadgeStyle: {
             backgroundColor: '#142344',
             fontSize: 14

@@ -16,8 +16,8 @@ export default function Perfil() {
       >
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Ionicons name="person-circle-outline" size={200} color={"#e2e2e2"} />
-          <Text style={{ fontSize: 20, fontWeight: "600" }}>
-            Piccoli Andriolo Boubee Santiago
+          <Text style={{ fontSize: 20, fontWeight: "600", textAlign: 'center' }}>
+            Maria Andriolo Santiago Buboubee Duarte Raeder 
           </Text>
         </View>
 

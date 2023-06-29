@@ -15,7 +15,7 @@ export default function Home() {
   const navigation = useNavigation();
   const { dadosUsuario } = useContext(DataContext);
   const { saveEditoras } = useContext(EditorasContext);
-  const { saveLivros } = useContext(LivrosContext);
+  const { saveLivros, livros } = useContext(LivrosContext);
   const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState([]);
 
@@ -56,20 +56,17 @@ export default function Home() {
     setValues(response);
     
   };
-  const changeBottomTab = async () => {
-    navigation.setOptions({tabBarStyle: {display: 'flex'}, headerShown: true})
-  }
 
   return (
     <>
       {isLoading ? (
         <>
-         {/* <LoadingComponent />  */}
+          <LoadingComponent /> 
         </>
       ) : (
         <>
           {
-            //changeBottomTab()
+            navigation.setOptions({tabBarStyle: {display: 'flex'}, headerShown: true})
           }
           <ScrollView>
             <View>
@@ -88,20 +85,27 @@ export default function Home() {
               <Text style={styles.title}> Destaques</Text>
               {/* Card livro em Destque */}
               <FeaturedBookCard
-                titulo={"Titulo 1"}
-                subtitulo={"O primeiro"}
-                avaliacao={1}
+                id = {livros[1]?.codigoLivro}
+                imagem={{ uri: "data:image/webp;base64," + livros[1]?.imagem}}
+                titulo={livros[1]?.nomeLivro}
+                subtitulo={livros[1]?.autorDTO?.nomeAutor}
+                avaliacao={3}
               />
               <FeaturedBookCard
-                titulo={"Titulo 2"}
-                subtitulo={"O segundo"}
-                avaliacao={5}
-              />
-              <FeaturedBookCard
-                titulo={"Titulo 3"}
-                subtitulo={"O terceiro"}
+                id = {livros[2]?.codigoLivro}
+                imagem={{ uri: "data:image/webp;base64," + livros[2]?.imagem}}
+                titulo={livros[2]?.nomeLivro}
+                subtitulo={livros[2]?.autorDTO?.nomeAutor}
                 avaliacao={4}
               />
+              <FeaturedBookCard
+                id = {livros[3]?.codigoLivro}
+                imagem={{ uri: "data:image/webp;base64," + livros[3]?.imagem}}
+                titulo={livros[3]?.nomeLivro}
+                subtitulo={livros[3]?.autorDTO?.nomeAutor}
+                avaliacao={5}
+              />
+              
             </View>
           </ScrollView>
         </>
