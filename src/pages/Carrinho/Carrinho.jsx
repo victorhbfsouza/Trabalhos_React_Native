@@ -25,7 +25,6 @@ export default function Carrinho(){
             setItensCarrinho(
               livros.filter((livro) => {
                 if (idsItensCarrinho.includes(livro.codigoLivro)) {
-                  console.log('filter: ' + livro.codigoLivro)
                   return livro;
                 }
               })
@@ -48,7 +47,6 @@ export default function Carrinho(){
   
     return (
       <View style={styles.container}>
-          
                {
               itensCarrinho === null || itensCarrinho.length == 0 ?
               (
@@ -73,20 +71,26 @@ export default function Carrinho(){
                                                       atualizaCarrinho = {setIDsItensCarrinho}/>}
                     keyExtractor={item => item.codigoLivro}
                     />
+                       <TouchableOpacity style={styles.finalizarPedidoBtn}>
+                          <Text>Finalizar pedido</Text>
+                      </TouchableOpacity>
                 </>
               )
           }
+        
       </View>
     );
   }
   
   const styles = StyleSheet.create({
       container:{
+          flex: 1,
           padding: 20,
           color: '#e2e2e2',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          gap: 10
+          gap: 10,
+          position: 'relative'
       },
       removeAll:{
         flexDirection: 'row',
@@ -97,5 +101,18 @@ export default function Carrinho(){
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: 20
+      },
+      finalizarPedidoBtn:{
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: '2%',
+        left: '10%',
+        right: '10%',
+        marginLeft: 'auto', 
+        marginRight: 'auto', 
+        backgroundColor: '#e6474a',
+        borderRadius: 5,
       }
   })

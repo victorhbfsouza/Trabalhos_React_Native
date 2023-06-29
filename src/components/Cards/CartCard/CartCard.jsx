@@ -12,20 +12,17 @@ export const CartCard = ({id, titulo, imagem, carrinho, atualizaCarrinho }) => {
         setItemCounter(itemCounter + 1);
     }
     const handleRemove = () => {
-        console.log('Item a ser apagado: ' + id)
         if(itemCounter > 1){
             setItemCounter(itemCounter - 1);
         }
         else{
-            //Transforma em array a props do carrinho
             let arrIdsCart = carrinho;
-            console.log(arrIdsCart)
+
             //Filtra todos os elementos, retornando todos os elementos menos o que foi
             //selecionado para ser apagado
             let newIds = arrIdsCart.filter(ids => {
                 return ids !== id
             })
-            console.log(typeof newIds)
 
             //Sobrecreve o  carrinho passando os ids agora filtrados
             overwriteItem('carrinho', newIds)

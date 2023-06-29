@@ -15,6 +15,7 @@ export default function Livro({ route }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [addedCart, setaddedCart] = useState(false);
   const [livro, setLivro] = useState({});
+  
   useEffect(() => {
     verifyFavorite()
     verifyCart()

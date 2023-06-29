@@ -38,6 +38,7 @@ export default function EditoraLivros({ route }) {
           id={item.codigoLivro}
           titulo={item.nomeLivro}
           imagem={{ uri: "data:image/webp;base64," + item.imagem }}
+          showFavSymbol={false}
         />
       )}
     />

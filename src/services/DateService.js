@@ -32,7 +32,6 @@ export async function saveItem(key, value) {
     }
 
     await SecureStore.setItemAsync(key, JSON.stringify(novoStorage));
-    console.log('Ids ' + key + await getValueFor(key))
 
   } catch (error) {
     console.log("Erro ao persistir dados:" + error);
@@ -45,7 +44,7 @@ export async function overwriteItem(key, value){
     } catch (error) {
       console.log("Erro ao persistir dados:" + error);
     }
-    console.log('Itens salvos:' + JSON.stringify(await getValueFor(key)))
+    //console.log('Itens salvos:' + JSON.stringify(await getValueFor(key)))
 }
 
 export async function getValueFor(key) {
