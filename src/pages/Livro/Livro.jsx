@@ -8,10 +8,11 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { saveItem, getValueFor } from "../../services/DateService";
 import { useNavigation } from "@react-navigation/native";
 import LoadingIndicator from "../../components/Loading/LoadingIndicator";
+import { CartContext } from "../../context/CartContext";
 
 export default function Livro({ route }) {
   const navigation = useNavigation();
-
+  const {saveCartContext} = useContext(CartContext);
   const { dadosUsuario } = useContext(DataContext);
   const [isFavorite, setIsFavorite] = useState(false);
   const [addedCart, setaddedCart] = useState(false);
@@ -60,7 +61,7 @@ export default function Livro({ route }) {
   };
 
   const handleAddCart = () => {
-    saveItem("carrinho", route.params?.id);
+    saveCartContext(route.params?.id)
     setaddedCart(!addedCart);
     navigation.navigate("menu-principal");
   };

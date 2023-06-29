@@ -1,19 +1,19 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
-import React,{useEffect} from "react";
+import React, { useContext } from "react";
 import Home from "../pages/Home";
 import Carrinho from "../pages/Carrinho/Carrinho";
-import Editoras from "../pages/Editoras/Editoras";
 import Favoritos from "../pages/Favoritos/Favoritos";
-import EditoraLivros from "../pages/EditoraLivros/EditoraLivros";
 import BuscaLivros from "../pages/BuscaLivros/BuscaLivros";
 import Perfil from "../pages/Perfil/Perfil";
+import { CartContext } from "../context/CartContext";
 
 const Tab = createBottomTabNavigator();
 
 export default function TabRoutes() {
-
-  useEffect(() => {}, [])
+  
+  const {cart} = useContext(CartContext);
+  
 
   return (
     <Tab.Navigator screenOptions={{ title: "Entre Linhas" }}>
@@ -42,7 +42,7 @@ export default function TabRoutes() {
         name="carrinho"
         component={Carrinho}
         options={{
-          tabBarBadge: 20,
+          tabBarBadge: cart.length === 0 ? null : cart.length,
           tabBarBadgeStyle: {
             backgroundColor: '#142344',
             fontSize: 14

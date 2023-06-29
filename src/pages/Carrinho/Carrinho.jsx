@@ -5,13 +5,14 @@ import { delItem, getValueFor } from "../../services/DateService";
 import { LivrosContext } from "../../context/LivrosContext";
 import { CartCard } from "../../components/Cards/CartCard/CartCard";
 import Ionicons from "@expo/vector-icons/Ionicons";
-// import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 export default function Carrinho(){
     const [idsItensCarrinho, setIDsItensCarrinho] = useState([]);
     const [itensCarrinho, setItensCarrinho] = useState([]);
     const { livros } = useContext(LivrosContext);
-    // const { cart, setCart } = useContext(CartContext);
+    const {setCart} = useContext(CartContext);
+   
   
     useFocusEffect(
       React.useCallback(() => {
@@ -21,6 +22,7 @@ export default function Carrinho(){
     );
 
     useEffect(() => {
+      setCart(idsItensCarrinho);
         if(idsItensCarrinho !== null){
             setItensCarrinho(
               livros.filter((livro) => {

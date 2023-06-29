@@ -1,12 +1,14 @@
 import { Image, Text, View, TouchableOpacity } from "react-native";
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { styles } from "./styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { overwriteItem } from "../../../services/DateService";
+import { CartContext } from "../../../context/CartContext";
 
 export const CartCard = ({id, titulo, imagem, carrinho, atualizaCarrinho }) => {
 
     const [itemCounter, setItemCounter] = useState(1);
+    const{setCart} = useContext(CartContext)
 
     const handleAdd = () => {
         setItemCounter(itemCounter + 1);
@@ -26,6 +28,9 @@ export const CartCard = ({id, titulo, imagem, carrinho, atualizaCarrinho }) => {
 
             //Sobrecreve o  carrinho passando os ids agora filtrados
             overwriteItem('carrinho', newIds)
+
+            //Atuliza o contexto
+            setCart(newIds);
 
             //utiliza a props de SetIdsCarrinho que é passada como props
             //como atualiza carrinho

@@ -24,7 +24,7 @@ export default function Home() {
     getLivros();
     getEditoras();
     getValues();
-    setTimeout(() => setIsLoading(false), 1500)
+    setTimeout(() => setIsLoading(false), 2000)
   }, []);
 
   const getLivros = async () => {
@@ -56,17 +56,20 @@ export default function Home() {
     setValues(response);
     
   };
+  const changeBottomTab = async () => {
+    navigation.setOptions({tabBarStyle: {display: 'flex'}, headerShown: true})
+  }
 
   return (
     <>
       {isLoading ? (
         <>
-          <LoadingComponent />
+         {/* <LoadingComponent />  */}
         </>
       ) : (
         <>
           {
-            navigation.setOptions({tabBarStyle: {display: 'flex'}, headerShown: true})
+            //changeBottomTab()
           }
           <ScrollView>
             <View>
