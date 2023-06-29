@@ -24,7 +24,7 @@ export default function Home() {
     getLivros();
     getEditoras();
     getValues();
-  setTimeout(() => setIsLoading(false), 1000)
+    setTimeout(() => setIsLoading(false), 1500)
   }, []);
 
   const getLivros = async () => {
