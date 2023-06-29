@@ -5,8 +5,7 @@ import { BtnLogout } from '../../components/Button/BtnLogout'
 export default function Perfil() {
   return (
     <View style={styles.container}>
-        <Text>Perfil</Text>
-        <BtnLogout/>
+      <BtnLogout/>
     </View>
   )
 }

@@ -2,7 +2,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import React, { useState, useContext, useEffect, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import { LivrosContext } from "../../context/LivrosContext";
-import { delItem, getValueFor } from "../../services/DateService";
+import { getValueFor } from "../../services/DateService";
 import BookCard from "../../components/Cards/BookCard/BookCard";
 
 export default function Favoritos() {
