@@ -56,20 +56,17 @@ export default function Home() {
     setValues(response);
     
   };
-  const changeBottomTab = async () => {
-    navigation.setOptions({tabBarStyle: {display: 'flex'}, headerShown: true})
-  }
 
   return (
     <>
       {isLoading ? (
         <>
-         {/* <LoadingComponent />  */}
+          <LoadingComponent /> 
         </>
       ) : (
         <>
           {
-            //changeBottomTab()
+            navigation.setOptions({tabBarStyle: {display: 'flex'}, headerShown: true})
           }
           <ScrollView>
             <View>
